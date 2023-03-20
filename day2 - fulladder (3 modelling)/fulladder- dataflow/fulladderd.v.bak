@@ -1,0 +1,20 @@
+module fulladdd(a,b,cin,sum,cout);
+input a,b,cin;
+output sum,cout;
+assign sum=a^b^cin;
+assign cout= (a&b)|(b&c)|(c&a);
+endmodule
+
+module fulladdd_tb;
+wire sum,cout;
+reg a,b,cin;
+fulladdd f1(a,b,cin,sum,cout);
+integer i;
+initial 
+begin
+for (i=0;i<8;i=i+1)
+begin
+#2 {cin,b,a}=i;
+end
+end
+endmodule

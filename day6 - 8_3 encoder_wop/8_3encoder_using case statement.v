@@ -1,0 +1,31 @@
+module encoder_wop (d,y);
+input [7:0]d;
+output [2:0]y;
+reg [2:0]y;
+always @(d)
+begin
+case(d)
+8'd1:y=3'b000;
+8'd2:y=3'b001;
+8'd4:y=3'b010;
+8'd8:y=3'b011;
+8'd16:y=3'b100;
+8'd32:y=3'b101;
+8'd64:y=3'b110;
+8'd128:y=3'b111;
+default y=3'bzzz;
+endcase
+end
+endmodule
+
+module encoder_wop_tb;
+reg [7:0]d;
+wire [2:0]y;
+encoder_wop e1(d,y);
+initial
+begin
+#2 d=8'b00000000;
+#2 d=8'b00010000;
+#2 d=8'b01000000;
+end
+endmodule
